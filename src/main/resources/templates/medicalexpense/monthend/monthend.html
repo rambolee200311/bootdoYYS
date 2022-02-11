@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+<div class="wrapper wrapper-content ">
+    <div class="col-sm-12">
+        <div class="ibox">
+            <div class="ibox-body">
+                <div class="fixed-table-toolbar">
+                    <div class="columns pull-left">
+                        <button shiro:hasPermission="medicalexpense:monthend:close" type="button" class="btn  btn-primary" onclick="closeMonthEnd()">
+                            <i class="fa fa-plus" aria-hidden="true"></i>结账
+                        </button>
+                        <button shiro:hasPermission="medicalexpense:monthend:open" type="button" class="btn  btn-danger" onclick="openMonthEnd()">
+                            <i class="fa fa-trash" aria-hidden="true"></i>反结账
+                        </button>
+                    </div>
+                </div>
+                <div class="wrapper wrapper-content ">
+                    <div class="row">
+                        <div class="col-sm-40">
+                            <div class="ibox float-e-margins">
+                                <div class="ibox-content">
+                                    <form class="form-horizontal m-t" id="signupForm">
+                                        <table id="exampleTable" data-mobile-responsive="true">
+                                            <tr>
+                                                <td>最后结账：</td>
+                                                <td>年</td>
+                                                <td>
+                                                    <div class="col-sm-8">
+                                                    <input id="lastyear" name="lastyear" th:value="${lastMonthEndDO.year}" class="form-control" type="text" readonly="true">
+                                                    </div>
+                                                </td>
+                                                <td>月</td>
+                                                <td>
+                                                    <div class="col-sm-8">
+                                                    <input id="lastmonth" name="lastmonth" th:value="${lastMonthEndDO.month}" class="form-control" type="text" readonly="true">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>最新：</td>
+                                                <td>年</td>
+                                                <td>
+                                                    <div class="col-sm-8">
+                                                    <input id="nextyear" name="nextyear" th:value="${nextMonthEndDO.year}" class="form-control" type="text" readonly="true">
+                                                    </div>
+                                                </td>
+                                                <td>月</td>
+                                                <td>
+                                                    <div class="col-sm-8">
+                                                    <input id="nextmonth" name="nextmonth" th:value="${nextMonthEndDO.month}" class="form-control" type="text" readonly="true">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<div th:include="include :: footer"></div>
+<script type="text/javascript" src="/js/appjs/medicalexpense/monthend/monthend.js"></script>
+</body>
+</html>

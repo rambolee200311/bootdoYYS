@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bootdo.medicalexpense.MonthEnd.dao.MonthEndDao">
+    <select id="getLastYear" resultType="int">
+        select ifnull(max(year),2020) year from monthend where bclose=1;
+    </select>
+    <select id="getNextYear" resultType="int">
+        select ifnull(min(year),2021) year from monthend where bclose=0;
+    </select>
+    <select id="getLastMonth" resultType="int">
+        select ifnull(max(month),12) month from monthend where bclose=1 and year=#{value};
+    </select>
+    <select id="getNextMonth" resultType="int">
+        select ifnull(min(month),2021) month from monthend where bclose=0 and year=#{value};
+    </select>
+    <update id="closeMonthEnd" parameterType="com.bootdo.medicalexpense.MonthEnd.domain.MonthEndDO">
+        update monthend
+        set bclose=1
+        <where>
+            year=#{year}
+            and month=#{month}
+        </where>
+    </update>
+    <update id="openMonthEnd" parameterType="com.bootdo.medicalexpense.MonthEnd.domain.MonthEndDO">
+        update monthend
+        set bclose=0
+        <where>
+            year=#{year}
+            and month=#{month}
+        </where>
+    </update>
+</mapper>

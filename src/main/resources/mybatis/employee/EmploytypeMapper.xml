@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bootdo.employee.dao.EmploytypeDao">
+
+	<select id="get" resultType="com.bootdo.employee.domain.EmploytypeDO">
+		select `id`,`statusname` from employtype where id = #{value}
+	</select>
+
+	<select id="list" resultType="com.bootdo.employee.domain.EmploytypeDO">
+		select `id`,`statusname` from employtype
+        <where>  
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="statusname != null and statusname != ''"> and statusname = #{statusname} </if>
+		  		</where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="count" resultType="int">
+		select count(*) from employtype
+		 <where>  
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="statusname != null and statusname != ''"> and statusname = #{statusname} </if>
+		  		</where>
+	</select>
+	 
+	<insert id="save" parameterType="com.bootdo.employee.domain.EmploytypeDO" useGeneratedKeys="true" keyProperty="id">
+		insert into employtype
+		(
+			`statusname`
+		)
+		values
+		(
+			#{statusname}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.bootdo.employee.domain.EmploytypeDO">
+		update employtype 
+		<set>
+			<if test="statusname != null">`statusname` = #{statusname}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="remove">
+		delete from employtype where id = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from employtype where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>

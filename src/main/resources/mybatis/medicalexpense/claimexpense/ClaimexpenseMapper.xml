@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bootdo.medicalexpense.claimexpense.dao.ClaimexpenseDao">
+
+	<select id="get" resultType="com.bootdo.medicalexpense.claimexpense.domain.ClaimexpenseDO">
+		select `id`,`employeeid`,`employeename`,`employstatusid`,`employtypeid`,`employeevidno`,`paydate`,`amount3`,`claimamount3`,`amount10`,`claimamount10`,`amount22`,`claimamount22` from claimexpense where id = #{value}
+	</select>
+	<select id="getEmployee" resultType="com.bootdo.employee.domain.EmployeeDO">
+		select `id`,`name`,`code`,`dept_id`,`employstatus_id`,`employtype_id`,`email`,`mobile`,`vnoid`,`sex`,`birth`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,ifnull(`parentid`,0) `parentid`,`isrelation`,`ismedinsur`,`rate`
+		from employee where id=#{value}
+	</select>
+	<select id="getEmployeeStatus" resultType="String">
+		select statusname from employstatus where id=#{value}
+	</select>
+	<select id="getEmployeeType" resultType="String">
+		select statusname from employtype where id=#{value}
+	</select>
+	<select id="list" resultType="com.bootdo.medicalexpense.claimexpense.domain.ClaimexpenseDO">
+		select `employstatus`,`employtype`,`id`,`employeeid`,`employeename`,`employstatusid`,`employtypeid`,`employeevidno`,`paydate`,`amount3`,`claimamount3`,`amount10`,`claimamount10`,`amount22`,`claimamount22` from claimexpense
+        <where>  
+				<if test="id != null and id != ''"> and id = #{id} </if>
+				<if test="employeeid != null and employeeid != ''"> and employeeid = #{employeeid} </if>
+				<if test="employeename != null and employeename != ''"> and employeename = #{employeename} </if>
+				<if test="employstatusid != null and employstatusid != ''"> and employstatusid = #{employstatusid} </if>
+				<if test="employtypeid != null and employtypeid != ''"> and employtypeid = #{employtypeid} </if>
+				<if test="employeevidno != null and employeevidno != ''"> and employeevidno = #{employeevidno} </if>
+				<if test="paydate != null and paydate != ''"> and paydate = #{paydate} </if>
+				<if test="amount3 != null and amount3 != ''"> and amount3 = #{amount3} </if>
+				<if test="claimamount3 != null and claimamount3 != ''"> and claimamount3 = #{claimamount3} </if>
+				<if test="amount10 != null and amount10 != ''"> and amount10 = #{amount10} </if>
+				<if test="claimamount10 != null and claimamount10 != ''"> and claimamount10 = #{claimamount10} </if>
+				<if test="amount22 != null and amount22 != ''"> and amount22 = #{amount22} </if>
+				<if test="claimamount22 != null and claimamount22 != ''"> and claimamount22 = #{claimamount22} </if>
+				<if test="ldate != null and ldate != ''"> and paydate &gt;= #{ldate} </if>
+				<if test="udate != null and udate != ''"> and paydate &lt;= #{udate} </if>
+		</where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by `id`
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	<select id="listExpense" resultType="com.bootdo.medicalexpense.medicalexpense1.domain.Medicalexpense1DO">
+		select `id`,`employeeid`,`employeename`,`employstatusid`,`employtypeid`,`employeevidno`,`paydate`,ifnull(`type`,'') `type`,
+		`amount1`,`amount2`,`amount3`,`amount4`,`amount5`,`amount6`,`amount7`,`amount8`,`amount9`,`amount10`,
+		`amount11`,`amount12`,`amount13`,`amount14`,`amount15`,`amount16`,`amount17`,`amount18`,`amount19`,`amount20`,
+		`amount21`,`amount22`,`amount23` from medicalexpense
+		<where>
+			<if test="ldate != null and ldate != ''"> and paydate &gt;= #{ldate} </if>
+			<if test="udate != null and udate != ''"> and paydate &lt;= #{udate} </if>
+		</where>
+		order by `id`
+	</select>
+ 	<select id="count" resultType="int">
+		select count(*) from claimexpense
+		 <where>
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="employeeid != null and employeeid != ''"> and employeeid = #{employeeid} </if>
+		  		  <if test="employeename != null and employeename != ''"> and employeename = #{employeename} </if>
+		  		  <if test="employstatusid != null and employstatusid != ''"> and employstatusid = #{employstatusid} </if>
+		  		  <if test="employtypeid != null and employtypeid != ''"> and employtypeid = #{employtypeid} </if>
+		  		  <if test="employeevidno != null and employeevidno != ''"> and employeevidno = #{employeevidno} </if>
+		  		  <if test="paydate != null and paydate != ''"> and paydate = #{paydate} </if>
+		  		  <if test="amount3 != null and amount3 != ''"> and amount3 = #{amount3} </if>
+		  		  <if test="claimamount3 != null and claimamount3 != ''"> and claimamount3 = #{claimamount3} </if>
+		  		  <if test="amount10 != null and amount10 != ''"> and amount10 = #{amount10} </if>
+		  		  <if test="claimamount10 != null and claimamount10 != ''"> and claimamount10 = #{claimamount10} </if>
+		  		  <if test="amount22 != null and amount22 != ''"> and amount22 = #{amount22} </if>
+		  		  <if test="claimamount22 != null and claimamount22 != ''"> and claimamount22 = #{claimamount22} </if>
+		  		</where>
+	</select>
+	<select id="getzf1" resultType="Double">
+		select ifnull(zf1,0) zf1 from regulation
+		<where>
+			<if test="employstatus_id != null and employstatus_id != ''"> and employstatus_id = #{employstatus_id} </if>
+			<if test="employtype_id != null and employtype_id != ''"> and employtype_id = #{employtype_id} </if>
+		</where>
+	</select>
+	<select id="getzf2" resultType="Double">
+		select ifnull(zf2,0) zf2 from regulation
+		<where>
+			<if test="employstatus_id != null and employstatus_id != ''"> and employstatus_id = #{employstatus_id} </if>
+			<if test="employtype_id != null and employtype_id != ''"> and employtype_id = #{employtype_id} </if>
+		</where>
+	</select>
+	<select id="getzf3" resultType="Double">
+		select ifnull(zf3,0) zf3 from regulation
+		<where>
+			<if test="employstatus_id != null and employstatus_id != ''"> and employstatus_id = #{employstatus_id} </if>
+			<if test="employtype_id != null and employtype_id != ''"> and employtype_id = #{employtype_id} </if>
+		</where>
+	</select>
+	<select id="getUdate" resultType="String">
+		select udate from monthend
+		<where>
+			<if test="year != null and year != ''"> and year = #{year} </if>
+			<if test="month != null and month != ''"> and month = #{month} </if>
+		</where>
+	</select>
+	<select id="getLdate" resultType="String">
+		select ldate from monthend
+		<where>
+			<if test="year != null and year != ''"> and year = #{year} </if>
+			<if test="month != null and month != ''"> and month = #{month} </if>
+		</where>
+	</select>
+	<insert id="save" parameterType="com.bootdo.medicalexpense.claimexpense.domain.ClaimexpenseDO">
+		insert into claimexpense
+		(
+			`id`, 
+			`employeeid`, 
+			`employeename`, 
+			`employstatusid`, 
+			`employtypeid`, 
+			`employeevidno`, 
+			`paydate`, 
+			`amount3`, 
+			`claimamount3`, 
+			`amount10`, 
+			`claimamount10`, 
+			`amount22`, 
+			`claimamount22`,
+			`month`,
+			`year`,
+			`employstatus`,
+			`employtype`
+		)
+		values
+		(
+			#{id}, 
+			#{employeeid}, 
+			#{employeename}, 
+			#{employstatusid}, 
+			#{employtypeid}, 
+			#{employeevidno}, 
+			#{paydate}, 
+			#{amount3}, 
+			#{claimamount3}, 
+			#{amount10}, 
+			#{claimamount10}, 
+			#{amount22}, 
+			#{claimamount22},
+			#{month},
+			#{year},
+			#{employstatus},
+			#{employtype}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.bootdo.medicalexpense.claimexpense.domain.ClaimexpenseDO">
+		update claimexpense 
+		<set>
+			<if test="employeeid != null">`employeeid` = #{employeeid}, </if>
+			<if test="employeename != null">`employeename` = #{employeename}, </if>
+			<if test="employstatusid != null">`employstatusid` = #{employstatusid}, </if>
+			<if test="employtypeid != null">`employtypeid` = #{employtypeid}, </if>
+			<if test="employeevidno != null">`employeevidno` = #{employeevidno}, </if>
+			<if test="paydate != null">`paydate` = #{paydate}, </if>
+			<if test="amount3 != null">`amount3` = #{amount3}, </if>
+			<if test="claimamount3 != null">`claimamount3` = #{claimamount3}, </if>
+			<if test="amount10 != null">`amount10` = #{amount10}, </if>
+			<if test="claimamount10 != null">`claimamount10` = #{claimamount10}, </if>
+			<if test="amount22 != null">`amount22` = #{amount22}, </if>
+			<if test="claimamount22 != null">`claimamount22` = #{claimamount22}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="remove">
+		delete from claimexpense where id = #{value}
+	</delete>
+	<delete id="delOldClaimExpense">
+		delete from claimexpense
+		<where>
+			id!=''
+			<if test="year != null and year != ''"> and year = #{year} </if>
+			<if test="month != null and month != ''"> and month = #{month} </if>
+		</where>
+	</delete>
+	<delete id="batchRemove">
+		delete from claimexpense where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+	<select id="getSumzf3" resultType="double">
+		select ifnull(sum(amount3),0) from claimexpense
+		<where>
+			<if test="year != null and year != ''"> and year = #{year} </if>
+			<if test="month != null and month != ''"> and month &lt;= #{month} </if>
+			<if test="employeeid != null and employeeid != ''"> and employeeid = #{employeeid} </if>
+		</where>
+	</select>
+	<select id="getSumClaimzf3" resultType="double">
+		select ifnull(sum(claimamount3),0) from claimexpense
+		<where>
+			<if test="year != null and year != ''"> and year = #{year} </if>
+			<if test="month != null and month != ''"> and month &lt;= #{month} </if>
+			<if test="employeeid != null and employeeid != ''"> and employeeid = #{employeeid} </if>
+		</where>
+	</select>
+	<select id="getRegulation1" resultType="com.bootdo.medicalexpense.claimexpense.domain.RegulationDO">
+		SELECT `id`,`lage`,`uage`,`amt1`,`rate1`,`amt2`,`rate2`,`amt3`,`rate3`
+		FROM regulation1
+		where lage  &lt;=#{age} and uage &gt;=#{age}
+	</select>
+	<select id="getRegulation2" resultType="com.bootdo.medicalexpense.claimexpense.domain.RegulationDO">
+		SELECT `id`,`lage`,`uage`,`amt1`,`rate1`,`amt2`,`rate2`,`amt3`,`rate3`
+		FROM regulation2
+		where lage  &lt;=#{age} and uage &gt;=#{age}
+	</select>
+	<select id="getMonthEndyear" resultType="int">
+		select min(year) year from monthend where bclose=0
+	</select>
+	<select id="getMonthEndmonth" resultType="int">
+		select min(month) month from monthend where bclose=0 and year=#{value}
+	</select>
+</mapper>

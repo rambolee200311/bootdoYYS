@@ -1,0 +1,18 @@
+2022-01-20 15:17:53 -Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@7b8233cd: startup date [Wed Jan 19 19:57:26 CST 2022]; root of context hierarchy
+2022-01-20 15:17:53 -Stopping beans in phase 2147483647
+2022-01-20 15:17:53 -Scheduler schedulerFactoryBean_$_NON_CLUSTERED paused.
+2022-01-20 15:17:53 -Stopping...
+2022-01-20 15:17:53 -BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [DefaultSubscriptionRegistry[cache[0 destination(s)], registry[0 sessions]]]]
+2022-01-20 15:17:53 -Stopped.
+2022-01-20 15:17:53 -Unregistering JMX-exposed beans on shutdown
+2022-01-20 15:17:53 -Unregistering JMX-exposed beans
+2022-01-20 15:17:53 -Shutting down ExecutorService 'brokerChannelExecutor'
+2022-01-20 15:17:53 -Shutting down ExecutorService 'messageBrokerTaskScheduler'
+2022-01-20 15:17:53 -Shutting down ExecutorService 'clientOutboundChannelExecutor'
+2022-01-20 15:17:53 -Shutting down ExecutorService 'clientInboundChannelExecutor'
+2022-01-20 15:17:53 -Scheduler schedulerFactoryBean_$_NON_CLUSTERED shutting down.
+2022-01-20 15:17:53 -Scheduler schedulerFactoryBean_$_NON_CLUSTERED paused.
+2022-01-20 15:17:53 -Scheduler schedulerFactoryBean_$_NON_CLUSTERED shutdown complete.
+2022-01-20 15:17:53 -Shutting down Quartz Scheduler
+2022-01-20 15:17:53 -{dataSource-1} closed
+2022-01-20 15:17:53 -Disabled session validation scheduler.

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+<div class="wrapper wrapper-content ">
+	<div class="fixed-table-toolbar">
+		<div class="columns pull-left">
+
+			<button type="button" class="btn  btn-primary" onclick="importtxt()">
+				校验
+			</button>
+			<button type="button" class="btn  btn-primary" onclick="save()">
+				导入
+			</button>
+		</div>
+		<div class="columns pull-right">
+			<button class="btn btn-success" onclick="reLoad()">查询</button>
+		</div>
+		<div class="columns pull-right col-md-2 nopadding">
+			<input id="searchName" type="text" class="form-control"
+				   placeholder="">
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="ibox float-e-margins">
+				<div class="ibox-content">
+					<form class="form-horizontal m-t" id="signupForm" enctype="multipart/form-data">
+						<div class="form-group">
+							<div class="columns pull-left">
+								<!--<label class="col-sm-3 control-label">txt文件：</label>-->
+								<input id="file" name="file" class="col-sm-6 form-control" type="file">
+							</div>
+						</div>
+						<table id="exampleTable" data-mobile-responsive="true">
+						</table>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div th:include="include::footer"></div>
+<script type="text/javascript" src="/js/appjs/medicalexpense/testexpense/testexpense.js">
+
+</script>
+</body>
+</html>

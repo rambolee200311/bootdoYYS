@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bootdo.medicalexpense.medicalexpense1.dao.Medicalexpense1Dao">
+
+	<select id="get" resultType="com.bootdo.medicalexpense.medicalexpense1.domain.Medicalexpense1DO">
+		select `id`,`employeeid`,`employstatusid`,`employtypeid`,`relationid`,`medicaltype`,`trededate`,`paydate`,`amount1`,`amount2`,`amount3`,`amount4`,`amount5`,`amount6`,`amount7`,`amount8`,`amount9`,`amount10`,`amount11`,`amount12`,`amount13`,`amount14`,`amount15`,`amount16`,`amount17`,`amount18`,`amount19`,`amount20`,`amount21`,`amount22`,`amount23`,`admitdate`,`dischargedate`,`vno`,`ddate`,`dmaker`,`vdate`,`vmaker`,`cmemo`,`amount99`,`amount100`,`amount101`,`amount102`,`isback` from medicalexpense where id = #{value}
+	</select>
+
+	<select id="list" resultType="com.bootdo.medicalexpense.medicalexpense1.domain.Medicalexpense1DO">
+		select `id`,`employeeid`,`employstatusid`,`employtypeid`,`relationid`,`medicaltype`,`trededate`,`paydate`,`amount1`,`amount2`,`amount3`,`amount4`,`amount5`,`amount6`,`amount7`,`amount8`,`amount9`,`amount10`,`amount11`,`amount12`,`amount13`,`amount14`,`amount15`,`amount16`,`amount17`,`amount18`,`amount19`,`amount20`,`amount21`,`amount22`,`amount23`,`admitdate`,`dischargedate`,`vno`,`ddate`,`dmaker`,`vdate`,`vmaker`,`cmemo`,`amount99`,`amount100`,`amount101`,`amount102`,`isback` from medicalexpense
+		<where>
+			<if test="id != null and id != ''"> and id = #{id} </if>
+			<if test="employeeid != null and employeeid != ''"> and employeeid = #{employeeid} </if>
+			<if test="employstatusid != null and employstatusid != ''"> and employstatusid = #{employstatusid} </if>
+			<if test="employtypeid != null and employtypeid != ''"> and employtypeid = #{employtypeid} </if>
+			<if test="relationid != null and relationid != ''"> and relationid = #{relationid} </if>
+			<if test="medicaltype != null and medicaltype != ''"> and medicaltype = #{medicaltype} </if>
+			<if test="trededate != null and trededate != ''"> and trededate = #{trededate} </if>
+			<if test="paydate != null and paydate != ''"> and paydate = #{paydate} </if>
+			<if test="amount1 != null and amount1 != ''"> and amount1 = #{amount1} </if>
+			<if test="amount2 != null and amount2 != ''"> and amount2 = #{amount2} </if>
+			<if test="amount3 != null and amount3 != ''"> and amount3 = #{amount3} </if>
+			<if test="amount4 != null and amount4 != ''"> and amount4 = #{amount4} </if>
+			<if test="amount5 != null and amount5 != ''"> and amount5 = #{amount5} </if>
+			<if test="amount6 != null and amount6 != ''"> and amount6 = #{amount6} </if>
+			<if test="amount7 != null and amount7 != ''"> and amount7 = #{amount7} </if>
+			<if test="amount8 != null and amount8 != ''"> and amount8 = #{amount8} </if>
+			<if test="amount9 != null and amount9 != ''"> and amount9 = #{amount9} </if>
+			<if test="amount10 != null and amount10 != ''"> and amount10 = #{amount10} </if>
+			<if test="amount11 != null and amount11 != ''"> and amount11 = #{amount11} </if>
+			<if test="amount12 != null and amount12 != ''"> and amount12 = #{amount12} </if>
+			<if test="amount13 != null and amount13 != ''"> and amount13 = #{amount13} </if>
+			<if test="amount14 != null and amount14 != ''"> and amount14 = #{amount14} </if>
+			<if test="amount15 != null and amount15 != ''"> and amount15 = #{amount15} </if>
+			<if test="amount16 != null and amount16 != ''"> and amount16 = #{amount16} </if>
+			<if test="amount17 != null and amount17 != ''"> and amount17 = #{amount17} </if>
+			<if test="amount18 != null and amount18 != ''"> and amount18 = #{amount18} </if>
+			<if test="amount19 != null and amount19 != ''"> and amount19 = #{amount19} </if>
+			<if test="amount20 != null and amount20 != ''"> and amount20 = #{amount20} </if>
+			<if test="amount21 != null and amount21 != ''"> and amount21 = #{amount21} </if>
+			<if test="amount22 != null and amount22 != ''"> and amount22 = #{amount22} </if>
+			<if test="amount23 != null and amount23 != ''"> and amount23 = #{amount23} </if>
+			<if test="admitdate != null and admitdate != ''"> and admitdate = #{admitdate} </if>
+			<if test="dischargedate != null and dischargedate != ''"> and dischargedate = #{dischargedate} </if>
+			<if test="vno != null and vno != ''"> and vno = #{vno} </if>
+			<if test="ddate != null and ddate != ''"> and ddate = #{ddate} </if>
+			<if test="dmaker != null and dmaker != ''"> and dmaker = #{dmaker} </if>
+			<if test="vdate != null and vdate != ''"> and vdate = #{vdate} </if>
+			<if test="vmaker != null and vmaker != ''"> and vmaker = #{vmaker} </if>
+			<if test="cmemo != null and cmemo != ''"> and cmemo = #{cmemo} </if>
+			<if test="amount99 != null and amount99 != ''"> and amount99 = #{amount99} </if>
+			<if test="amount100 != null and amount100 != ''"> and amount100 = #{amount100} </if>
+			<if test="amount101 != null and amount101 != ''"> and amount101 = #{amount101} </if>
+			<if test="amount102 != null and amount102 != ''"> and amount102 = #{amount102} </if>
+			<if test="isback != null and isback != ''"> and isback = #{isback} </if>
+		</where>
+		<choose>
+			<when test="sort != null and sort.trim() != ''">
+				order by ${sort} ${order}
+			</when>
+			<otherwise>
+				order by id desc
+			</otherwise>
+		</choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	<select id="listinfo" resultType="com.bootdo.medicalexpense.medicalexpense1.domain.MedicalexpenseInfoDO">
+		select a.*,b.name employeename,c.statusname employstatusname,d.statusname employtypename
+		from medicalexpense a
+		left join employee b on a.employeeid=b.id
+		left join employstatus c on a.employstatusid=c.id
+		left join employtype d on a.employtypeid=d.id
+		<where>
+			<if test="id != null and id != ''"> and id = #{id} </if>
+			<if test="employeename != null and employeename != ''"> and employeename = #{employeename} </if>
+			<if test="employstatusid != null and employstatusid != ''"> and employstatusid = #{employstatusid} </if>
+			<if test="employtypeid != null and employtypeid != ''"> and employtypeid = #{employtypeid} </if>
+			<if test="relationid != null and relationid != ''"> and relationid = #{relationid} </if>
+			<if test="medicaltype != null and medicaltype != ''"> and medicaltype = #{medicaltype} </if>
+			<if test="trededate != null and trededate != ''"> and trededate = #{trededate} </if>
+			<if test="paydate != null and paydate != ''"> and paydate = #{paydate} </if>
+			<if test="amount1 != null and amount1 != ''"> and amount1 = #{amount1} </if>
+			<if test="amount2 != null and amount2 != ''"> and amount2 = #{amount2} </if>
+			<if test="amount3 != null and amount3 != ''"> and amount3 = #{amount3} </if>
+			<if test="amount4 != null and amount4 != ''"> and amount4 = #{amount4} </if>
+			<if test="amount5 != null and amount5 != ''"> and amount5 = #{amount5} </if>
+			<if test="amount6 != null and amount6 != ''"> and amount6 = #{amount6} </if>
+			<if test="amount7 != null and amount7 != ''"> and amount7 = #{amount7} </if>
+			<if test="amount8 != null and amount8 != ''"> and amount8 = #{amount8} </if>
+			<if test="amount9 != null and amount9 != ''"> and amount9 = #{amount9} </if>
+			<if test="amount10 != null and amount10 != ''"> and amount10 = #{amount10} </if>
+			<if test="amount11 != null and amount11 != ''"> and amount11 = #{amount11} </if>
+			<if test="amount12 != null and amount12 != ''"> and amount12 = #{amount12} </if>
+			<if test="amount13 != null and amount13 != ''"> and amount13 = #{amount13} </if>
+			<if test="amount14 != null and amount14 != ''"> and amount14 = #{amount14} </if>
+			<if test="amount15 != null and amount15 != ''"> and amount15 = #{amount15} </if>
+			<if test="amount16 != null and amount16 != ''"> and amount16 = #{amount16} </if>
+			<if test="amount17 != null and amount17 != ''"> and amount17 = #{amount17} </if>
+			<if test="amount18 != null and amount18 != ''"> and amount18 = #{amount18} </if>
+			<if test="amount19 != null and amount19 != ''"> and amount19 = #{amount19} </if>
+			<if test="amount20 != null and amount20 != ''"> and amount20 = #{amount20} </if>
+			<if test="amount21 != null and amount21 != ''"> and amount21 = #{amount21} </if>
+			<if test="amount22 != null and amount22 != ''"> and amount22 = #{amount22} </if>
+			<if test="amount23 != null and amount23 != ''"> and amount23 = #{amount23} </if>
+			<if test="admitdate != null and admitdate != ''"> and admitdate = #{admitdate} </if>
+			<if test="dischargedate != null and dischargedate != ''"> and dischargedate = #{dischargedate} </if>
+			<if test="vno != null and vno != ''"> and vno = #{vno} </if>
+			<if test="ddate != null and ddate != ''"> and ddate = #{ddate} </if>
+			<if test="dmaker != null and dmaker != ''"> and dmaker = #{dmaker} </if>
+			<if test="vdate != null and vdate != ''"> and vdate = #{vdate} </if>
+			<if test="vmaker != null and vmaker != ''"> and vmaker = #{vmaker} </if>
+			<if test="cmemo != null and cmemo != ''"> and cmemo = #{cmemo} </if>
+			<if test="amount99 != null and amount99 != ''"> and amount99 = #{amount99} </if>
+			<if test="amount100 != null and amount100 != ''"> and amount100 = #{amount100} </if>
+			<if test="amount101 != null and amount101 != ''"> and amount101 = #{amount101} </if>
+			<if test="amount102 != null and amount102 != ''"> and amount102 = #{amount102} </if>
+			<if test="isback != null and isback != ''"> and isback = #{isback} </if>
+		</where>
+		<choose>
+			<when test="sort != null and sort.trim() != ''">
+				order by ${sort} ${order}
+			</when>
+			<otherwise>
+				order by id desc
+			</otherwise>
+		</choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	<select id="count" resultType="int">
+		select count(*) from medicalexpense
+		<where>
+			<if test="id != null and id != ''"> and id = #{id} </if>
+			<if test="employeeid != null and employeeid != ''"> and employeeid = #{employeeid} </if>
+			<if test="employstatusid != null and employstatusid != ''"> and employstatusid = #{employstatusid} </if>
+			<if test="employtypeid != null and employtypeid != ''"> and employtypeid = #{employtypeid} </if>
+			<if test="relationid != null and relationid != ''"> and relationid = #{relationid} </if>
+			<if test="medicaltype != null and medicaltype != ''"> and medicaltype = #{medicaltype} </if>
+			<if test="trededate != null and trededate != ''"> and trededate = #{trededate} </if>
+			<if test="paydate != null and paydate != ''"> and paydate = #{paydate} </if>
+			<if test="amount1 != null and amount1 != ''"> and amount1 = #{amount1} </if>
+			<if test="amount2 != null and amount2 != ''"> and amount2 = #{amount2} </if>
+			<if test="amount3 != null and amount3 != ''"> and amount3 = #{amount3} </if>
+			<if test="amount4 != null and amount4 != ''"> and amount4 = #{amount4} </if>
+			<if test="amount5 != null and amount5 != ''"> and amount5 = #{amount5} </if>
+			<if test="amount6 != null and amount6 != ''"> and amount6 = #{amount6} </if>
+			<if test="amount7 != null and amount7 != ''"> and amount7 = #{amount7} </if>
+			<if test="amount8 != null and amount8 != ''"> and amount8 = #{amount8} </if>
+			<if test="amount9 != null and amount9 != ''"> and amount9 = #{amount9} </if>
+			<if test="amount10 != null and amount10 != ''"> and amount10 = #{amount10} </if>
+			<if test="amount11 != null and amount11 != ''"> and amount11 = #{amount11} </if>
+			<if test="amount12 != null and amount12 != ''"> and amount12 = #{amount12} </if>
+			<if test="amount13 != null and amount13 != ''"> and amount13 = #{amount13} </if>
+			<if test="amount14 != null and amount14 != ''"> and amount14 = #{amount14} </if>
+			<if test="amount15 != null and amount15 != ''"> and amount15 = #{amount15} </if>
+			<if test="amount16 != null and amount16 != ''"> and amount16 = #{amount16} </if>
+			<if test="amount17 != null and amount17 != ''"> and amount17 = #{amount17} </if>
+			<if test="amount18 != null and amount18 != ''"> and amount18 = #{amount18} </if>
+			<if test="amount19 != null and amount19 != ''"> and amount19 = #{amount19} </if>
+			<if test="amount20 != null and amount20 != ''"> and amount20 = #{amount20} </if>
+			<if test="amount21 != null and amount21 != ''"> and amount21 = #{amount21} </if>
+			<if test="amount22 != null and amount22 != ''"> and amount22 = #{amount22} </if>
+			<if test="amount23 != null and amount23 != ''"> and amount23 = #{amount23} </if>
+			<if test="admitdate != null and admitdate != ''"> and admitdate = #{admitdate} </if>
+			<if test="dischargedate != null and dischargedate != ''"> and dischargedate = #{dischargedate} </if>
+			<if test="vno != null and vno != ''"> and vno = #{vno} </if>
+			<if test="ddate != null and ddate != ''"> and ddate = #{ddate} </if>
+			<if test="dmaker != null and dmaker != ''"> and dmaker = #{dmaker} </if>
+			<if test="vdate != null and vdate != ''"> and vdate = #{vdate} </if>
+			<if test="vmaker != null and vmaker != ''"> and vmaker = #{vmaker} </if>
+			<if test="cmemo != null and cmemo != ''"> and cmemo = #{cmemo} </if>
+			<if test="amount99 != null and amount99 != ''"> and amount99 = #{amount99} </if>
+			<if test="amount100 != null and amount100 != ''"> and amount100 = #{amount100} </if>
+			<if test="amount101 != null and amount101 != ''"> and amount101 = #{amount101} </if>
+			<if test="amount102 != null and amount102 != ''"> and amount102 = #{amount102} </if>
+			<if test="isback != null and isback != ''"> and isback = #{isback} </if>
+		</where>
+	</select>
+
+	<insert id="save" parameterType="com.bootdo.medicalexpense.medicalexpense1.domain.Medicalexpense1DO">
+		insert into medicalexpense
+		(
+			`id`,
+			`employeeid`,
+			`employstatusid`,
+			`employtypeid`,
+			`relationid`,
+			`medicaltype`,
+			`trededate`,
+			`paydate`,
+			`amount1`,
+			`amount2`,
+			`amount3`,
+			`amount4`,
+			`amount5`,
+			`amount6`,
+			`amount7`,
+			`amount8`,
+			`amount9`,
+			`amount10`,
+			`amount11`,
+			`amount12`,
+			`amount13`,
+			`amount14`,
+			`amount15`,
+			`amount16`,
+			`amount17`,
+			`amount18`,
+			`amount19`,
+			`amount20`,
+			`amount21`,
+			`amount22`,
+			`amount23`,
+			`admitdate`,
+			`dischargedate`,
+			`vno`,
+			`ddate`,
+			`dmaker`,
+			`vdate`,
+			`vmaker`,
+			`cmemo`,
+			`amount99`,
+			`amount100`,
+			`amount101`,
+			`amount102`,
+			`isback`,
+			`employeename`,
+			`employeevidno`
+		)
+       values
+           (
+				#{id},
+				#{employeeid},
+				#{employstatusid},
+				#{employtypeid},
+				#{relationid},
+				#{medicaltype},
+				#{trededate},
+				#{paydate},
+				#{amount1},
+				#{amount2},
+				#{amount3},
+				#{amount4},
+				#{amount5},
+				#{amount6},
+				#{amount7},
+				#{amount8},
+				#{amount9},
+				#{amount10},
+				#{amount11},
+				#{amount12},
+				#{amount13},
+				#{amount14},
+				#{amount15},
+				#{amount16},
+				#{amount17},
+				#{amount18},
+				#{amount19},
+				#{amount20},
+				#{amount21},
+				#{amount22},
+				#{amount23},
+				#{admitdate},
+				#{dischargedate},
+				#{vno},
+				#{ddate},
+				#{dmaker},
+				#{vdate},
+				#{vmaker},
+				#{cmemo},
+				#{amount99},
+				#{amount100},
+				#{amount101},
+				#{amount102},
+			 	#{isback},
+				#{employeename},
+				#{employeevidno}
+			)
+	</insert>
+
+	<update id="update" parameterType="com.bootdo.medicalexpense.medicalexpense1.domain.Medicalexpense1DO">
+		update medicalexpense
+		<set>
+			<if test="employeeid != null">`employeeid` = #{employeeid}, </if>
+			<if test="employstatusid != null">`employstatusid` = #{employstatusid}, </if>
+			<if test="employtypeid != null">`employtypeid` = #{employtypeid}, </if>
+			<if test="relationid != null">`relationid` = #{relationid}, </if>
+			<if test="medicaltype != null">`medicaltype` = #{medicaltype}, </if>
+			<if test="trededate != null">`trededate` = #{trededate}, </if>
+			<if test="paydate != null">`paydate` = #{paydate}, </if>
+			<if test="amount1 != null">`amount1` = #{amount1}, </if>
+			<if test="amount2 != null">`amount2` = #{amount2}, </if>
+			<if test="amount3 != null">`amount3` = #{amount3}, </if>
+			<if test="amount4 != null">`amount4` = #{amount4}, </if>
+			<if test="amount5 != null">`amount5` = #{amount5}, </if>
+			<if test="amount6 != null">`amount6` = #{amount6}, </if>
+			<if test="amount7 != null">`amount7` = #{amount7}, </if>
+			<if test="amount8 != null">`amount8` = #{amount8}, </if>
+			<if test="amount9 != null">`amount9` = #{amount9}, </if>
+			<if test="amount10 != null">`amount10` = #{amount10}, </if>
+			<if test="amount11 != null">`amount11` = #{amount11}, </if>
+			<if test="amount12 != null">`amount12` = #{amount12}, </if>
+			<if test="amount13 != null">`amount13` = #{amount13}, </if>
+			<if test="amount14 != null">`amount14` = #{amount14}, </if>
+			<if test="amount15 != null">`amount15` = #{amount15}, </if>
+			<if test="amount16 != null">`amount16` = #{amount16}, </if>
+			<if test="amount17 != null">`amount17` = #{amount17}, </if>
+			<if test="amount18 != null">`amount18` = #{amount18}, </if>
+			<if test="amount19 != null">`amount19` = #{amount19}, </if>
+			<if test="amount20 != null">`amount20` = #{amount20}, </if>
+			<if test="amount21 != null">`amount21` = #{amount21}, </if>
+			<if test="amount22 != null">`amount22` = #{amount22}, </if>
+			<if test="amount23 != null">`amount23` = #{amount23}, </if>
+			<if test="admitdate != null">`admitdate` = #{admitdate}, </if>
+			<if test="dischargedate != null">`dischargedate` = #{dischargedate}, </if>
+			<if test="vno != null">`vno` = #{vno}, </if>
+			<if test="ddate != null">`ddate` = #{ddate}, </if>
+			<if test="dmaker != null">`dmaker` = #{dmaker}, </if>
+			<if test="vdate != null">`vdate` = #{vdate}, </if>
+			<if test="vmaker != null">`vmaker` = #{vmaker}, </if>
+			<if test="cmemo != null">`cmemo` = #{cmemo}, </if>
+			<if test="amount99 != null">`amount99` = #{amount99}, </if>
+			<if test="amount100 != null">`amount100` = #{amount100}, </if>
+			<if test="amount101 != null">`amount101` = #{amount101}, </if>
+			<if test="amount102 != null">`amount102` = #{amount102}</if>
+			<if test="isback != null">`isback` = #{isback}</if>
+		</set>
+		where id = #{id}
+	</update>
+
+	<delete id="remove">
+		delete from medicalexpense where id = #{value}
+	</delete>
+
+	<delete id="batchRemove">
+		delete from medicalexpense where id in
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>

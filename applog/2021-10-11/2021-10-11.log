@@ -1,0 +1,36 @@
+2021-10-11 15:46:09 -Bound request context to thread: org.apache.catalina.connector.RequestFacade@680cde61
+2021-10-11 15:46:09 -Cleared thread-bound request context: org.apache.catalina.connector.RequestFacade@680cde61
+2021-10-11 15:46:09 -Bound request context to thread: org.apache.catalina.connector.RequestFacade@680cde61
+2021-10-11 15:46:09 -请求地址 : http://localhost:9090/
+2021-10-11 15:46:09 -HTTP METHOD : GET
+2021-10-11 15:46:09 -CLASS_METHOD : com.bootdo.system.controller.LoginController.welcome
+2021-10-11 15:46:09 -参数 : [{}]
+2021-10-11 15:46:09 -耗时 : 3
+2021-10-11 15:46:09 -返回值 : redirect:/login
+2021-10-11 15:46:09 -Cleared thread-bound request context: org.apache.catalina.connector.RequestFacade@680cde61
+2021-10-11 15:46:09 -Bound request context to thread: org.apache.catalina.connector.RequestFacade@680cde61
+2021-10-11 15:46:09 -请求地址 : http://localhost:9090/login
+2021-10-11 15:46:09 -HTTP METHOD : GET
+2021-10-11 15:46:09 -CLASS_METHOD : com.bootdo.system.controller.LoginController.login
+2021-10-11 15:46:09 -参数 : []
+2021-10-11 15:46:09 -耗时 : 1
+2021-10-11 15:46:09 -返回值 : login
+2021-10-11 15:46:09 -Cleared thread-bound request context: org.apache.catalina.connector.RequestFacade@680cde61
+2021-10-11 15:46:32 -Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@666b83a4: startup date [Sun Oct 10 19:23:08 CST 2021]; root of context hierarchy
+2021-10-11 15:46:32 -Stopping beans in phase 2147483647
+2021-10-11 15:46:32 -Scheduler schedulerFactoryBean_$_NON_CLUSTERED paused.
+2021-10-11 15:46:32 -Stopping...
+2021-10-11 15:46:32 -BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [DefaultSubscriptionRegistry[cache[0 destination(s)], registry[0 sessions]]]]
+2021-10-11 15:46:32 -Stopped.
+2021-10-11 15:46:32 -Unregistering JMX-exposed beans on shutdown
+2021-10-11 15:46:32 -Unregistering JMX-exposed beans
+2021-10-11 15:46:32 -Shutting down ExecutorService 'brokerChannelExecutor'
+2021-10-11 15:46:32 -Shutting down ExecutorService 'messageBrokerTaskScheduler'
+2021-10-11 15:46:32 -Shutting down ExecutorService 'clientOutboundChannelExecutor'
+2021-10-11 15:46:32 -Shutting down ExecutorService 'clientInboundChannelExecutor'
+2021-10-11 15:46:32 -Scheduler schedulerFactoryBean_$_NON_CLUSTERED shutting down.
+2021-10-11 15:46:32 -Scheduler schedulerFactoryBean_$_NON_CLUSTERED paused.
+2021-10-11 15:46:32 -Scheduler schedulerFactoryBean_$_NON_CLUSTERED shutdown complete.
+2021-10-11 15:46:32 -Shutting down Quartz Scheduler
+2021-10-11 15:46:32 -{dataSource-1} closed
+2021-10-11 15:46:32 -Disabled session validation scheduler.

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bootdo.medicalexpense.testexpense.dao.TestExpenseDao">
+	<insert id="save" parameterType="java.util.List">
+		insert into medicalexpense(id,employeename,employeeid,employstatusid,employtypeid,employeevidno,medicaltype,employstatus,trededate,paydate,amount1,amount2,amount3,amount4,amount5,amount6,amount7,amount8,amount9,amount10,amount11,amount12,amount13,amount14,amount15,amount16,amount17,amount18,amount19,amount20,amount21,amount22,admitdate,dischargedate,rate,type
+		,ddate) values
+		<foreach item="item" index="index" collection="list" open="" separator="," close="">
+			(#{item.id},#{item.employeename},#{item.employeeid},#{item.employstatusid},#{item.employtypeid},#{item.employeevidno},#{item.medicaltype},#{item.employstatus},#{item.trededate},#{item.paydate},#{item.amount1},#{item.amount2},#{item.amount3},#{item.amount4},#{item.amount5},#{item.amount6},#{item.amount7},#{item.amount8},#{item.amount9},#{item.amount10},#{item.amount11},#{item.amount12},#{item.amount13},#{item.amount14},#{item.amount15},#{item.amount16},#{item.amount17},#{item.amount18},#{item.amount19},#{item.amount20},#{item.amount21},#{item.amount22},#{item.admitdate},#{item.dischargedate},#{item.rate},#{item.type}
+			,#{item.ddate})
+		</foreach>
+	</insert>
+	<select id="getEmployee" resultType="com.bootdo.employee.domain.EmployeeDO">
+		select `id`,`name`,`code`,`dept_id`,`employstatus_id`,`employtype_id`,`email`,`mobile`,`vnoid`,`sex`,`birth`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`parentid`,`isrelation`,`ismedinsur` from employee
+		<where>
+			<if test="name != null and name != ''"> and (name = #{name})</if>
+			<if test="vnoid != null and vnoid != ''"> and vnoid = #{vnoid} </if>
+		</where>
+	</select>
+</mapper>
